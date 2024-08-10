@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/10 17:37:26 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/10 17:48:15 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,32 @@
 void	*philo()
 {
 	printf("Philosophers\n");
+	sleep(3);
+	printf("Ending thread\n");
 	return (0);
 }
 
 int	main()
 {
 	pthread_t	t1;
-	pthread_t	t2;
+	int			id;
 
-	pthread_create(&t1, NULL, &philo, NULL);
-	pthread_create(&t2, NULL, &philo, NULL);
-	pthread_join(t1, NULL);
-	pthread_join(t2, NULL);
+	id = fork();
+	printf("ID: %d\n", id);
+	if (pthread_create(&t1, NULL, &philo, NULL) != 0)
+	{
+		printf("Error, while creating the first thread\n");
+		return (1);
+	}
+	if (pthread_join(t1, NULL) != 0)
+	{
+		printf("Error, while creating the first thread\n");
+		return (1);
+	}
 	return (0);
 }
+
+//if (pthread_create(&t1, NULL, &philo, NULL) != 0)
+//		error;
+//if (pthread_join(t1, NULL) != 0)
+//		error;
