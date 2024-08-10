@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/10 16:09:38 by paprzyby         ###   ########.fr       */
+/*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
+/*   Updated: 2024/08/10 16:10:39 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#if !defined(PHILO_H)
-# define PHILO_H
+#include "philo.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <pthread.h>
+void	philo(char *str)
+{
+	if (*str == 'c')
+		printf("cwel");
+	else if (*str == 'p')
+		printf("pedal");
+}
 
-void	philo(char *str);
-
-#endif
+int	main(int ac, char **av)
+{
+	if (ac == 2)
+		philo(av[1]);
+	printf("\n");
+	return (0);
+}
