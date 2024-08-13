@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 13:51:26 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:48:21 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,62 +19,19 @@ int	error(char *message)
 	exit(1);
 }
 
-bool	is_digit(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}
-
-int	ft_atoi(char *str)
-{
-	int result = 0;
-	int sign = 1;
-
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
-		sign = -1;
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + *str - '0';
-		str++;
-	}
-	return (sign * result);
-}
-
-void	check_the_arguments(char *str, int i)
-{
-	int	num;
-
-	if (!is_digit(str))
-		error("Arguments should only contain numbers\n");
-	num = ft_atoi(str);
-	if (i == 1 && num < 1)
-		error("Too few philosophers passed as a argument\n");
-}
-
 int	main(int ac, char **av)
 {
-	int	i;
+	int		i;
+	t_list	*philo;
 
 	(void)av;
 	if (ac != 5 && ac != 6)
 		return (error("Wrong number of arguments passed\n"));
 	i = 1;
+	philo = malloc(sizeof(t_list));
 	while (i < ac)
 	{
-		check_the_arguments(av[i], i);
+		check_and_init(av[i], i, philo);
 		i++;
 	}
 	return(0);
