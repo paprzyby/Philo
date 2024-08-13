@@ -6,41 +6,73 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/10 17:48:15 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:43:11 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo()
+int	error(char *message)
 {
-	printf("Philosophers\n");
-	sleep(3);
-	printf("Ending thread\n");
-	return (0);
+	printf("Error\n");
+	printf("%s", message);
+	return (1);
 }
 
-int	main()
+bool	is_digit(char *str)
 {
-	pthread_t	t1;
-	int			id;
 
-	id = fork();
-	printf("ID: %d\n", id);
-	if (pthread_create(&t1, NULL, &philo, NULL) != 0)
+}
+
+int	ft_atoi(char *str)
+{
+	int result = 0;
+	int sign = 1;
+
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		printf("Error, while creating the first thread\n");
-		return (1);
+		result = result * 10 + *str - '0';
+		str++;
 	}
-	if (pthread_join(t1, NULL) != 0)
+	return (sign * result);
+}
+
+int	check_the_arguments(char *str, int i)
+{
+	int	num;
+
+
+	num = ft_atoi(str);
+	if (i == 1)
 	{
-		printf("Error, while creating the first thread\n");
-		return (1);
+
 	}
-	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	int	i;
+
+	(void)av;
+	if (ac != 5 && ac != 6)
+		return (error("Wrong number of arguments passed\n"));
+	i = 1;
+	while (i < ac)
+		check_the_arguments(av[i++], i);
+	return(0);
 }
 
 //if (pthread_create(&t1, NULL, &philo, NULL) != 0)
 //		error;
 //if (pthread_join(t1, NULL) != 0)
 //		error;
+//child process is always 0
+//main process is always different than 0
+//fork returns -1 for errors
+//if you call fork() 2 times, you will get 4 processes
