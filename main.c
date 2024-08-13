@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 13:43:11 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:51:26 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,22 @@ int	error(char *message)
 {
 	printf("Error\n");
 	printf("%s", message);
-	return (1);
+	exit(1);
 }
 
 bool	is_digit(char *str)
 {
+	int	i;
 
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
+			return (false);
+	}
+	return (true);
 }
 
 int	ft_atoi(char *str)
@@ -43,16 +53,15 @@ int	ft_atoi(char *str)
 	return (sign * result);
 }
 
-int	check_the_arguments(char *str, int i)
+void	check_the_arguments(char *str, int i)
 {
 	int	num;
 
-
+	if (!is_digit(str))
+		error("Arguments should only contain numbers\n");
 	num = ft_atoi(str);
-	if (i == 1)
-	{
-
-	}
+	if (i == 1 && num < 1)
+		error("Too few philosophers passed as a argument\n");
 }
 
 int	main(int ac, char **av)
@@ -64,7 +73,10 @@ int	main(int ac, char **av)
 		return (error("Wrong number of arguments passed\n"));
 	i = 1;
 	while (i < ac)
-		check_the_arguments(av[i++], i);
+	{
+		check_the_arguments(av[i], i);
+		i++;
+	}
 	return(0);
 }
 

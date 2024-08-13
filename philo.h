@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 13:43:06 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 13:49:25 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 int		error(char *message);
 bool	is_digit(char *str);
 int		ft_atoi(char *str);
-int		check_the_arguments(char *str, int i);
+void	check_the_arguments(char *str, int i);
 
 #endif
