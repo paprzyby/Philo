@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:48:11 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 14:48:29 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:24:09 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ bool	is_digit(char *str)
 	return (true);
 }
 
-int	ft_atoi(char *str)
+long	ft_atol(char *str)
 {
-	int result = 0;
-	int sign = 1;
+	long result;
+	int sign;
 
+	result = 0;
+	sign = 1;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-')
@@ -48,14 +50,17 @@ int	ft_atoi(char *str)
 
 void	check_and_init(char *str, int i, t_list *philo)
 {
-	int	num;
+	long	num;
 
 	if (!is_digit(str))
-		error("Arguments should only contain numbers\n");
-	num = ft_atoi(str);
-	if (i == 1 && num < 1)
+		error("Arguments should only contain numbers\n", philo);
+	num = ft_atol(str);
+	if (num > INT_MAX)
+		error("Arguments have to fit in a integer\n", philo);
+	if (i == 1)
 	{
-		error("Too few philosophers passed as a argument\n");
+		if (num < 1)
+			error("Too few philosophers passed as a argument\n", philo);
 		philo->philo_count = num;
 		philo->forks_count = num;
 	}
@@ -64,7 +69,10 @@ void	check_and_init(char *str, int i, t_list *philo)
 	else if (i == 3)
 		philo->time_to_eat = num;
 	else if (i == 4)
+	{
 		philo->time_to_sleep = num;
+		philo->num_of_times = 0;
+	}
 	else if (i == 5)
 		philo->num_of_times = num;
 }

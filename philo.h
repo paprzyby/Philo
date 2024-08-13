@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 14:47:09 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:23:21 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <pthread.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <limits.h>
 
 typedef struct	s_list
 {
@@ -29,9 +30,9 @@ typedef struct	s_list
 	int	num_of_times;
 }				t_list;
 
-int		error(char *message);
+int		error(char *message, t_list *philo);
 bool	is_digit(char *str);
-int		ft_atoi(char *str);
+long	ft_atol(char *str);
 void	check_and_init(char *str, int i, t_list *philo);
 
 #endif

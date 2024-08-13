@@ -6,14 +6,16 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 14:48:21 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/13 17:12:58 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	error(char *message)
+int	error(char *message, t_list *philo)
 {
+	if (philo)
+		free(philo);
 	printf("Error\n");
 	printf("%s", message);
 	exit(1);
@@ -21,19 +23,19 @@ int	error(char *message)
 
 int	main(int ac, char **av)
 {
-	int		i;
 	t_list	*philo;
+	int		i;
 
-	(void)av;
-	if (ac != 5 && ac != 6)
-		return (error("Wrong number of arguments passed\n"));
-	i = 1;
 	philo = malloc(sizeof(t_list));
+	i = 1;
+	if (ac != 5 && ac != 6)
+		return (error("Wrong number of arguments passed\n", philo));
 	while (i < ac)
 	{
 		check_and_init(av[i], i, philo);
 		i++;
 	}
+	free(philo);
 	return(0);
 }
 
