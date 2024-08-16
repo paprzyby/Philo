@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_and_init.c                                   :+:      :+:    :+:   */
+/*   param_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:48:11 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/16 14:01:13 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:27:45 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ long	ft_atol(char *str)
 	return (sign * result);
 }
 
-void	check_and_init(char *str, int i, t_list *list)
+void	param_check(char *str, int i, t_data *list)
 {
 	long	num;
 

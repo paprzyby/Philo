@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/08/13 14:48:46 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/08/16 14:09:55 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ COLOUR_END		=	\033[0m
 
 NAME		=	philo
 
-SOURCE		=	main.c check_and_init.c
+SOURCE		=	main.c param_check.c init.c
 
 OBJECTS		=	$(SOURCE:.c=.o)
 
