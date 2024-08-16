@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:48:11 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 17:24:09 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:01:13 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,31 @@ long	ft_atol(char *str)
 	return (sign * result);
 }
 
-void	check_and_init(char *str, int i, t_list *philo)
+void	check_and_init(char *str, int i, t_list *list)
 {
 	long	num;
 
 	if (!is_digit(str))
-		error("Arguments should only contain numbers\n", philo);
+		error("Arguments should only contain numbers\n", list);
 	num = ft_atol(str);
 	if (num > INT_MAX)
-		error("Arguments have to fit in a integer\n", philo);
+		error("Arguments have to fit in a integer\n", list);
 	if (i == 1)
 	{
 		if (num < 1)
-			error("Too few philosophers passed as a argument\n", philo);
-		philo->philo_count = num;
-		philo->forks_count = num;
+			error("Too few philosophers passed as a argument\n", list);
+		list->philo_count = num;
+		list->forks_count = num;
 	}
 	else if (i == 2)
-		philo->time_to_die = num;
+		list->time_to_die = num;
 	else if (i == 3)
-		philo->time_to_eat = num;
+		list->time_to_eat = num;
 	else if (i == 4)
 	{
-		philo->time_to_sleep = num;
-		philo->num_of_times = 0;
+		list->time_to_sleep = num;
+		list->num_of_times = 0;
 	}
 	else if (i == 5)
-		philo->num_of_times = num;
+		list->num_of_times = num;
 }

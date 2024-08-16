@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/13 17:23:21 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:00:18 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct	s_list
 	int	num_of_times;
 }				t_list;
 
-int		error(char *message, t_list *philo);
+int		error(char *message, t_list *list);
 bool	is_digit(char *str);
 long	ft_atol(char *str);
-void	check_and_init(char *str, int i, t_list *philo);
+void	check_and_init(char *str, int i, t_list *list);
 
 #endif
