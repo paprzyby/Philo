@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/17 09:18:42 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/08/17 09:30:28 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ bool	is_digit(char *str);
 long	ft_atol(char *str);
 void	param_check(char *str, int i, t_data *list);
 void	init(t_data *list);
+void	philo_init(t_data *list);
 
 #endif
