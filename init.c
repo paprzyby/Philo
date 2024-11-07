@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:27:46 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:33:42 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	data_init(int ac, char **av, t_data *list)
 	int	i;
 
 	i = 1;
+	list->num_of_times = 0;
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)
@@ -44,10 +45,7 @@ int	data_init(int ac, char **av, t_data *list)
 		else if (i == 3)
 			list->time_to_eat = ft_atol(av[i]);
 		else if (i == 4)
-		{
 			list->time_to_sleep = ft_atol(av[i]);
-			list->num_of_times = 0;
-		}
 		else if (i == 5)
 			list->num_of_times = ft_atol(av[i]);
 		else
@@ -82,9 +80,8 @@ t_data	*init(int ac, char **av)
 	{
 		free(list->philos);
 		free(list->forks);
-		free(list);
-		return (NULL);
+		return (free(list), NULL);
 	}
-	//philo_init(list);
+	// philo_init(list);
 	return (list);
 }

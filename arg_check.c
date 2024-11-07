@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:48:11 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:01:51 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:28:52 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ bool	is_digit(char *str)
 
 long	ft_atol(char *str)
 {
-	long result;
-	int sign;
+	long	result;
+	int		sign;
 
 	result = 0;
 	sign = 1;
