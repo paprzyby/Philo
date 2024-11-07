@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:34:00 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:44:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ bool				is_digit(char *str);
 long				ft_atol(char *str);
 int					arg_check(int ac, char **av);
 t_data				*init(int ac, char **av);
-void				philo_init(t_data *list);
-int					data_init(int ac, char **av, t_data *list);
-void				cleanup(t_data *list);
+void				philo_init(t_data *data);
+int					data_init(int ac, char **av, t_data *data);
+void				cleanup(t_data *data);
 
 #endif

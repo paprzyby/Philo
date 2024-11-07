@@ -6,15 +6,15 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:26:52 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:27:42 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:44:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	cleanup(t_data *list)
+void	cleanup(t_data *data)
 {
-	free(list->philos);
-	free(list->forks);
-	free(list);
+	free(data->philos);
+	free(data->forks);
+	free(data);
 }

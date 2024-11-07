@@ -6,20 +6,20 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:33:42 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:44:43 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_init(t_data *list)
+void	philo_init(t_data *data)
 {
 	t_philo	*philo;
 	int		i;
 
 	i = 0;
 	philo = NULL;
-	while (i < list->philo_count)
+	while (i < data->philo_count)
 	{
 		philo->id = i + 1;
 		philo->meals = 0;
@@ -28,12 +28,12 @@ void	philo_init(t_data *list)
 	}
 }
 
-int	data_init(int ac, char **av, t_data *list)
+int	data_init(int ac, char **av, t_data *data)
 {
 	int	i;
 
 	i = 1;
-	list->num_of_times = 0;
+	data->num_of_times = 0;
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)
@@ -41,47 +41,47 @@ int	data_init(int ac, char **av, t_data *list)
 		else if (i == 1 && ft_atol(av[i]) > 200)
 			return (printf("Too much philosophers passed as a argument\n"), 1);
 		else if (i == 2)
-			list->time_to_die = ft_atol(av[i]);
+			data->time_to_die = ft_atol(av[i]);
 		else if (i == 3)
-			list->time_to_eat = ft_atol(av[i]);
+			data->time_to_eat = ft_atol(av[i]);
 		else if (i == 4)
-			list->time_to_sleep = ft_atol(av[i]);
+			data->time_to_sleep = ft_atol(av[i]);
 		else if (i == 5)
-			list->num_of_times = ft_atol(av[i]);
+			data->num_of_times = ft_atol(av[i]);
 		else
-			list->philo_count = ft_atol(av[i]);
+			data->philo_count = ft_atol(av[i]);
 		i++;
 	}
-	list->forks_count = list->philo_count;
+	data->forks_count = data->philo_count;
 	return (0);
 }
 
 t_data	*init(int ac, char **av)
 {
-	t_data	*list;
+	t_data	*data;
 
-	list = malloc(sizeof(t_data));
-	if (!list)
+	data = malloc(sizeof(t_data));
+	if (!data)
 		return (printf("Error while allocating memory\n"), NULL);
-	list->philos = malloc(sizeof(t_philo) * list->philo_count);
-	if (!list->philos)
+	data->philos = malloc(sizeof(t_philo) * data->philo_count);
+	if (!data->philos)
 	{
-		free(list);
-		return (printf("Error while allocating memory\n"), NULL);
-	}
-	list->forks = malloc(sizeof(t_fork) * list->philo_count);
-	if (!list->forks)
-	{
-		free(list->philos);
-		free(list);
+		free(data);
 		return (printf("Error while allocating memory\n"), NULL);
 	}
-	if (data_init(ac, av, list))
+	data->forks = malloc(sizeof(t_fork) * data->philo_count);
+	if (!data->forks)
 	{
-		free(list->philos);
-		free(list->forks);
-		return (free(list), NULL);
+		free(data->philos);
+		free(data);
+		return (printf("Error while allocating memory\n"), NULL);
 	}
-	// philo_init(list);
-	return (list);
+	if (data_init(ac, av, data))
+	{
+		free(data->philos);
+		free(data->forks);
+		return (free(data), NULL);
+	}
+	// philo_init(data);
+	return (data);
 }
