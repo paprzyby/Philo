@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/08/17 09:30:28 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:23:11 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ typedef struct	s_data
 	t_fork	*forks;
 }				t_data;
 
-int		error(char *message, t_data *list);
 bool	is_digit(char *str);
 long	ft_atol(char *str);
-void	param_check(char *str, int i, t_data *list);
-void	init(t_data *list);
+int		arg_check(int ac, char **av);
+t_data	*init(int ac, char **av);
 void	philo_init(t_data *list);
+int		data_init(int ac, char **av, t_data *list);
 
 #endif

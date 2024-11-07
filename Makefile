@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/08/16 14:09:55 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/11/07 17:06:32 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,19 @@
 COLOUR_GREEN	=	\033[0;32m
 COLOUR_END		=	\033[0m
 
+NAME			=	philo
 
-NAME		=	philo
+SOURCE			=	main.c \
+					arg_check.c \
+					init.c \
 
-SOURCE		=	main.c param_check.c init.c
+OBJECTS			=	$(SOURCE:.c=.o)
 
-OBJECTS		=	$(SOURCE:.c=.o)
+CC				=	cc
 
-CC			=	cc
+RM				=	rm -rf
 
-RM			=	rm -f
-
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS			=	-Wall -Wextra -Werror
 
 $(NAME):	$(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME)
@@ -38,7 +39,7 @@ $(NAME):	$(OBJECTS)
 all:			$(NAME)
 
 clean:
-	$(RM) -rf $(OBJECTS)
+	$(RM) $(OBJECTS)
 	@echo "$(COLOUR_GREEN)objects removed successfully..$(COLOUR_END)"
 
 fclean:	clean
