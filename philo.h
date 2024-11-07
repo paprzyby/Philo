@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:23:11 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:27:21 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int		arg_check(int ac, char **av);
 t_data	*init(int ac, char **av);
 void	philo_init(t_data *list);
 int		data_init(int ac, char **av, t_data *list);
+void	cleanup(t_data *list);
 
 #endif
