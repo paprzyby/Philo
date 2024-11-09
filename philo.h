@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 14:32:28 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:47:33 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,14 @@ typedef struct s_data
 void				ft_putstr_fd(char *s, int fd);
 
 int					data_init(int ac, char **av, t_data *data);
-int					philos_forks_init(t_data *data);
+void				philos_forks_init(t_data *data);
 
 bool				is_digit(char *str);
 long				ft_atol(char *str);
 int					arg_check(int ac, char **av);
 t_data				*struct_init(int ac, char **av);
-void				philo_init(t_data *data);
 void				cleanup(t_data *data);
+void				philos_init(t_data *data);
+void				forks_init(t_data *data);
 
 #endif

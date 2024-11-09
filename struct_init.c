@@ -6,11 +6,27 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 14:36:06 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:55:48 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
+
+void	philos_init(t_data *data)
+{
+	int		i;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		data->philos->id = i + 1;
+		data->philos->meals = 0;
+		data->philos->last_meal = 0;
+		data->philos->full = false;
+		data->philos->dead_flag = false;
+		i++;
+	}
+}
 
 int	data_init(int ac, char **av, t_data *data)
 {
@@ -37,6 +53,7 @@ int	data_init(int ac, char **av, t_data *data)
 		i++;
 	}
 	data->forks_count = data->philo_count;
+	philos_init(data);
 	return (0);
 }
 
