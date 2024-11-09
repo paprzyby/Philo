@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 13:09:01 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:32:28 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_philo
 {
 	pthread_t		philo;
 	int				id;
+	int				meals;
 	long			last_meal;
-	long			meals;
 	bool			full;
 	bool			dead_flag;
 	t_fork			*left_fork;
@@ -55,6 +55,8 @@ typedef struct s_data
 	t_philo			*philos;
 	t_fork			*forks;
 }					t_data;
+
+void				ft_putstr_fd(char *s, int fd);
 
 int					data_init(int ac, char **av, t_data *data);
 int					philos_forks_init(t_data *data);

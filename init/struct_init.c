@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 12:58:33 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:36:06 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	data_init(int ac, char **av, t_data *data)
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)
-			return (printf("Too few philosophers passed as a argument\n"), 1);
+			return (ft_putstr_fd("Too few philosophers passed as a argument\n", 2), 1);
 		else if (i == 1 && ft_atol(av[i]) > 200)
-			return (printf("Too much philosophers passed as a argument\n"), 1);
+			return (ft_putstr_fd("Too much philosophers passed as a argument\n", 2), 1);
 		else if (i == 2)
 			data->time_to_die = ft_atol(av[i]);
 		else if (i == 3)
@@ -46,19 +46,19 @@ t_data	*struct_init(int ac, char **av)
 
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (printf("Error while allocating memory\n"), NULL);
+		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
 	data->philos = malloc(sizeof(t_philo) * data->philo_count);
 	if (!data->philos)
 	{
 		free(data);
-		return (printf("Error while allocating memory\n"), NULL);
+		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
 	}
 	data->forks = malloc(sizeof(t_fork) * data->philo_count);
 	if (!data->forks)
 	{
 		free(data->philos);
 		free(data);
-		return (printf("Error while allocating memory\n"), NULL);
+		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
 	}
 	if (data_init(ac, av, data))
 	{

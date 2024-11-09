@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 13:02:30 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:34:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	main(int ac, char **av)
 	t_data	*data;
 
 	if (ac != 5 && ac != 6)
-		return (printf("Error: Wrong number of arguments passed\n"), 1);
+		return (ft_putstr_fd("Error: Wrong number of arguments passed\n", 2), 1);
 	if (arg_check(ac, av))
 		return (1);
 	if (!(data = struct_init(ac, av)))
 		return (1);
-	//if (philos_forks_init(data))
-	//	return (1);
+	if (philos_forks_init(data))
+		return (1);
 	// printf("time_to_die: %d\n", data->time_to_die);
 	// printf("time_to_eat: %d\n", data->time_to_eat);
 	// printf("time_to_sleep: %d\n", data->time_to_sleep);
