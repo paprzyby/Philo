@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   struct_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/07 17:44:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:58:33 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-void	philo_init(t_data *data)
-{
-	t_philo	*philo;
-	int		i;
-
-	i = 0;
-	philo = NULL;
-	while (i < data->philo_count)
-	{
-		philo->id = i + 1;
-		philo->meals = 0;
-		philo->full = false;
-		i++;
-	}
-}
+#include "../philo.h"
 
 int	data_init(int ac, char **av, t_data *data)
 {
@@ -56,7 +40,7 @@ int	data_init(int ac, char **av, t_data *data)
 	return (0);
 }
 
-t_data	*init(int ac, char **av)
+t_data	*struct_init(int ac, char **av)
 {
 	t_data	*data;
 
@@ -82,6 +66,5 @@ t_data	*init(int ac, char **av)
 		free(data->forks);
 		return (free(data), NULL);
 	}
-	// philo_init(data);
 	return (data);
 }

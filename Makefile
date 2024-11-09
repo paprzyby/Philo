@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/11/07 17:45:01 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/11/09 13:02:57 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ NAME			=	philo
 
 SOURCE			=	main.c \
 					arg_check.c \
-					init.c \
-					cleanup.c
+					cleanup.c \
+					init/struct_init.c \
+					init/philos_forks_init.c
 
 OBJECTS			=	$(SOURCE:.c=.o)
 
