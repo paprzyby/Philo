@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 15:34:11 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:55:05 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	main(int ac, char **av)
 	if (!(data = struct_init(ac, av)))
 		return (1);
 	if (philo(data))
+	{
+		ft_putstr_fd("Error\n", 2);
 		return (cleanup(data), 1);
+	}
 	return (cleanup(data), 0);
 }

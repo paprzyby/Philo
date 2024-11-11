@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 15:00:15 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:54:26 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	data_init(int ac, char **av, t_data *data)
 			data->philo_count = ft_atol(av[i]);
 		i++;
 	}
-	data->forks_count = data->philo_count;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 15:40:48 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:54:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_philo
 typedef struct s_data
 {
 	int				philo_count;
-	int				forks_count;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
@@ -55,7 +54,6 @@ void				ft_putstr_fd(char *s, int fd);
 bool				ft_isdigit(char *str);
 long				ft_atol(char *str);
 
-int					arg_check(int ac, char **av);
 void				cleanup(t_data *data);
 
 t_data				*struct_init(int ac, char **av);
@@ -65,5 +63,6 @@ void				forks_init(t_data *data);
 
 int					philo(t_data *data);
 void				*checker_function(void *arg);
+void				*philo_function(void *arg);
 
 #endif
