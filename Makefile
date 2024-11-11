@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/11/11 15:11:02 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/11/11 15:35:49 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SOURCE			=	main.c \
 					struct_init.c \
 					utils/ft_putstr_fd.c \
 					utils/ft_isdigit.c \
-					utils/ft_atol.c
+					utils/ft_atol.c \
+					philo.c
 
 OBJECTS			=	$(SOURCE:.c=.o)
 
