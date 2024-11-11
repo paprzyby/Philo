@@ -6,24 +6,41 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 17:55:48 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:00:15 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philos_init(t_data *data)
+void	forks_init(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_mutex_init(&data->forks[i], NULL);
+		i++;
+	}
+	pthread_mutex_init(&data->write_lock, NULL);
+	pthread_mutex_init(&data->meal_lock, NULL);
+	pthread_mutex_init(&data->dead_lock, NULL);
+}
+
+void	philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 {
 	int		i;
 
 	i = 0;
 	while (i < data->philo_count)
 	{
-		data->philos->id = i + 1;
-		data->philos->meals = 0;
-		data->philos->last_meal = 0;
-		data->philos->full = false;
-		data->philos->dead_flag = false;
+		philos[i].id = i + 1;
+		philos[i].meals = 0;
+		philos[i].last_meal = 0;
+		philos[i].full = false;
+		philos[i].dead_flag = false;
+		philos[i].left_fork = &forks[i];
+		philos[i].right_fork = &forks[(i + 1) % data->philo_count];
 		i++;
 	}
 }
@@ -53,7 +70,6 @@ int	data_init(int ac, char **av, t_data *data)
 		i++;
 	}
 	data->forks_count = data->philo_count;
-	philos_init(data);
 	return (0);
 }
 
@@ -64,24 +80,21 @@ t_data	*struct_init(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
+	if (data_init(ac, av, data))
+		return (free(data), NULL);
 	data->philos = malloc(sizeof(t_philo) * data->philo_count);
 	if (!data->philos)
 	{
 		free(data);
 		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
 	}
-	data->forks = malloc(sizeof(t_fork) * data->philo_count);
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->philo_count);
 	if (!data->forks)
 	{
 		free(data->philos);
-		free(data);
-		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
-	}
-	if (data_init(ac, av, data))
-	{
-		free(data->philos);
-		free(data->forks);
 		return (free(data), NULL);
 	}
+	forks_init(data);
+	philos_init(data, data->philos, data->forks);
 	return (data);
 }

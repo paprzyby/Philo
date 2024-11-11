@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 17:47:33 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:06:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/* ----------  mutexes ---------- */
-
-typedef struct s_fork
-{
-	pthread_mutex_t	fork;
-	int				id;
-}					t_fork;
-
-/* ----------  threads ---------- */
+/* ----------  threads and mutexes ---------- */
 
 typedef struct s_philo
 {
@@ -38,8 +30,8 @@ typedef struct s_philo
 	long			last_meal;
 	bool			full;
 	bool			dead_flag;
-	t_fork			*left_fork;
-	t_fork			*right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 }					t_philo;
 
 /* ----------  program data ---------- */
@@ -52,21 +44,23 @@ typedef struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				num_of_times;
+	pthread_mutex_t	write_lock;
+	pthread_mutex_t	meal_lock;
+	pthread_mutex_t	dead_lock;
+	pthread_mutex_t	*forks;
 	t_philo			*philos;
-	t_fork			*forks;
 }					t_data;
 
 void				ft_putstr_fd(char *s, int fd);
-
-int					data_init(int ac, char **av, t_data *data);
-void				philos_forks_init(t_data *data);
-
 bool				is_digit(char *str);
 long				ft_atol(char *str);
+
 int					arg_check(int ac, char **av);
-t_data				*struct_init(int ac, char **av);
 void				cleanup(t_data *data);
-void				philos_init(t_data *data);
+
+t_data				*struct_init(int ac, char **av);
+int					data_init(int ac, char **av, t_data *data);
+void				philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks);
 void				forks_init(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:48:11 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 14:34:11 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:01:33 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	arg_check(int ac, char **av)
 	while (ac > i)
 	{
 		if (!is_digit(av[i]))
-			return (ft_putstr_fd("Error: Numeric arguments required\n", 2), 1);
+			return (ft_putstr_fd("Error: Positive numeric arguments required\n", 2), 1);
 		num = ft_atol(av[i]);
 		if (num > INT_MAX)
 			return (ft_putstr_fd("Error: Numbers are too big\n", 2), 1);

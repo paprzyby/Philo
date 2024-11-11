@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 17:56:23 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:05:53 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ int	main(int ac, char **av)
 		return (1);
 	if (!(data = struct_init(ac, av)))
 		return (1);
-	// printf("time_to_die: %d\n", data->time_to_die);
-	// printf("time_to_eat: %d\n", data->time_to_eat);
-	// printf("time_to_sleep: %d\n", data->time_to_sleep);
-	// printf("num_of_times: %d\n", data->num_of_times);
-	// printf("philo_count: %d\n", data->philo_count);
-	// printf("forks_count: %d\n", data->forks_count);
 	cleanup(data);
 	return (0);
 }
-
-//sprawdzic - w arg
