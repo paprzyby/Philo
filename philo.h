@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 15:06:29 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:10:22 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_data
 }					t_data;
 
 void				ft_putstr_fd(char *s, int fd);
-bool				is_digit(char *str);
+bool				ft_isdigit(char *str);
 long				ft_atol(char *str);
 
 int					arg_check(int ac, char **av);

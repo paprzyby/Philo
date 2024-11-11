@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_check.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 14:48:11 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/09 18:01:33 by paprzyby         ###   ########.fr       */
+/*   Created: 2024/11/11 15:08:48 by paprzyby          #+#    #+#             */
+/*   Updated: 2024/11/11 15:09:00 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-bool	is_digit(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}
+#include "../philo.h"
 
 long	ft_atol(char *str)
 {
@@ -46,22 +31,4 @@ long	ft_atol(char *str)
 		str++;
 	}
 	return (sign * result);
-}
-
-int	arg_check(int ac, char **av)
-{
-	long	num;
-	int		i;
-
-	i = 1;
-	while (ac > i)
-	{
-		if (!is_digit(av[i]))
-			return (ft_putstr_fd("Error: Positive numeric arguments required\n", 2), 1);
-		num = ft_atol(av[i]);
-		if (num > INT_MAX)
-			return (ft_putstr_fd("Error: Numbers are too big\n", 2), 1);
-		i++;
-	}
-	return (0);
 }
