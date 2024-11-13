@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:17:22 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 15:45:32 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:57:40 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_the_flags(t_data *data, int i, int finished_eating)
 		if (data->philos[i].dead_flag == true)
 		{
 			pthread_mutex_lock(&data->write_lock);
-			printf("(timestamp_in_ms) %d died\n", i);
+			printf("%ld %d died\n", get_timestamp(), i);
 			data->philo_died = true;
 			pthread_mutex_unlock(&data->write_lock);
 			pthread_mutex_unlock(&data->dead_lock);

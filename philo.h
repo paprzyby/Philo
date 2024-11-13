@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 15:45:39 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:56:54 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void				*checker_function(void *arg);
 void				*philo_function(void *arg);
 
 void				check_the_flags(t_data *data, int i, int finished_eating);
+
+long				get_timestamp(void);
 
 #endif

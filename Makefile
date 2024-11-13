@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/11/13 15:04:43 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/11/13 15:51:28 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SOURCE			=	main.c \
 					utils/ft_atol.c \
 					source/creating_threads.c \
 					source/philo_function.c \
-					source/checker_function.c
+					source/checker_function.c \
+					source/get_timestamp.c
 
 OBJECTS			=	$(SOURCE:.c=.o)
 
