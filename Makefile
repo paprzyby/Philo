@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/11/13 14:20:25 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/11/13 15:04:43 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,14 @@ COLOUR_END		=	\033[0m
 NAME			=	philo
 
 SOURCE			=	main.c \
-					cleanup.c \
-					struct_init.c \
+					source/cleanup.c \
+					source/struct_init.c \
 					utils/ft_putstr_fd.c \
 					utils/ft_isdigit.c \
 					utils/ft_atol.c \
-					creating_threads.c \
-					philo_function.c \
-					checker_function.c
+					source/creating_threads.c \
+					source/philo_function.c \
+					source/checker_function.c
 
 OBJECTS			=	$(SOURCE:.c=.o)
 
