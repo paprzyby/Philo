@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 12:50:50 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:19:36 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	}
 	if (!(data = struct_init(ac, av)))
 		return (1);
-	if (philo(data))
+	if (creating_threads(data))
 	{
 		ft_putstr_fd("Error with creating the thread\n", 2);
 		return (cleanup(data), 1);

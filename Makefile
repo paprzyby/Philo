@@ -6,7 +6,7 @@
 #    By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/10 15:59:16 by paprzyby          #+#    #+#              #
-#    Updated: 2024/11/12 18:04:09 by paprzyby         ###   ########.fr        #
+#    Updated: 2024/11/13 14:20:25 by paprzyby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SOURCE			=	main.c \
 					utils/ft_putstr_fd.c \
 					utils/ft_isdigit.c \
 					utils/ft_atol.c \
-					philo.c
+					creating_threads.c \
+					philo_function.c \
+					checker_function.c
 
 OBJECTS			=	$(SOURCE:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 13:42:25 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:19:56 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int					data_init(int ac, char **av, t_data *data);
 void				philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks);
 void				forks_init(t_data *data);
 
-int					philo(t_data *data);
+int					creating_threads(t_data *data);
 void				*checker_function(void *arg);
 void				*philo_function(void *arg);
 
