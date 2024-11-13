@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 16:52:43 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:53:21 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void	philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 		philos[i].dead_flag = false;
 		philos[i].left_fork = &forks[i];
 		philos[i].right_fork = &forks[(i + 1) % data->philo_count];
-		philos[i].write_lock = &data->write_lock;
-		philos[i].meal_lock = &data->meal_lock;
-		philos[i].dead_lock = &data->dead_lock;
+		philos[i].data = data;
 		i++;
 	}
 }

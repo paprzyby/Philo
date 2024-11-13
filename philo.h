@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 16:48:03 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:42:25 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 
 /* ----------  threads and mutexes ---------- */
 
+struct s_data;
+
 typedef struct s_philo
 {
 	pthread_t		philo;
@@ -33,9 +35,7 @@ typedef struct s_philo
 	bool			dead_flag;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*write_lock;
-	pthread_mutex_t	*meal_lock;
-	pthread_mutex_t	*dead_lock;
+	struct s_data	*data;
 }					t_philo;
 
 /* ----------  program data ---------- */

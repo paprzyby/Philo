@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/11 15:55:05 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:50:50 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (philo(data))
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error with creating the thread\n", 2);
 		return (cleanup(data), 1);
 	}
 	return (cleanup(data), 0);
