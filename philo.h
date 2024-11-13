@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 14:19:56 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:45:39 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_philo
 {
 	pthread_t		philo;
 	int				id;
-	int				meals;
+	int				meals_eaten;
 	long			last_meal;
 	bool			full;
 	bool			dead_flag;
@@ -46,7 +46,9 @@ typedef struct s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				num_of_times;
+	int				time_of_eats;
+	bool			all_ate;
+	bool			philo_died;
 	pthread_mutex_t	write_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	dead_lock;
@@ -68,5 +70,7 @@ void				forks_init(t_data *data);
 int					creating_threads(t_data *data);
 void				*checker_function(void *arg);
 void				*philo_function(void *arg);
+
+void				check_the_flags(t_data *data, int i, int finished_eating);
 
 #endif

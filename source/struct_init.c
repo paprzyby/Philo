@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 14:23:51 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:42:11 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 	while (i < data->philo_count)
 	{
 		philos[i].id = i + 1;
-		philos[i].meals = 0;
+		philos[i].meals_eaten = 0;
 		philos[i].last_meal = 0;
 		philos[i].full = false;
 		philos[i].dead_flag = false;
@@ -51,7 +51,9 @@ int	data_init(int ac, char **av, t_data *data)
 	int	i;
 
 	i = 1;
-	data->num_of_times = 0;
+	data->time_of_eats = 0;
+	data->all_ate = false;
+	data->philo_died = false;
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)
@@ -65,7 +67,7 @@ int	data_init(int ac, char **av, t_data *data)
 		else if (i == 4)
 			data->time_to_sleep = ft_atol(av[i]);
 		else if (i == 5)
-			data->num_of_times = ft_atol(av[i]);
+			data->time_of_eats = ft_atol(av[i]);
 		else
 			data->philo_count = ft_atol(av[i]);
 		i++;
