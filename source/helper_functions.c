@@ -6,13 +6,13 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:18:27 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 18:11:58 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:22:24 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void print_message(t_philo *philos, int	id, char *str)
+void	print_message(t_philo *philos, int id, char *str)
 {
 	t_data	*data;
 	long	time;

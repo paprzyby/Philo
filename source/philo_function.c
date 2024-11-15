@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:17:18 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 18:11:20 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:22:29 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	process_duration(long time, t_data *data)
 {
-	long long i;
+	long long	i;
 
 	i = get_timestamp();
 	while (data->philo_died == false && data->all_ate == false)
@@ -45,9 +45,10 @@ void	eating(t_data *data, t_philo *philos)
 
 void	*philo_function(void *arg)
 {
-	t_philo *philos = (t_philo *)arg;
+	t_philo	*philos;
 	t_data	*data;
 
+	philos = (t_philo *)arg;
 	data = philos->data;
 	if (philos->id % 2)
 		usleep(1000);
@@ -62,4 +63,4 @@ void	*philo_function(void *arg)
 	return (arg);
 }
 
-//if (data->philo_count == 1)????
+// if (data->philo_count == 1)????

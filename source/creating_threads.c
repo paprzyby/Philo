@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:26:56 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 14:23:46 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:22:18 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	creating_threads(t_data *data)
 	philos = data->philos;
 	while (i < data->philo_count)
 	{
-		if (pthread_create(&data->philos[i].philo, NULL, philo_function, &philos[i]) != 0)
+		if (pthread_create(&data->philos[i].philo, NULL, philo_function,
+				&philos[i]) != 0)
 			return (1);
 		i++;
 	}

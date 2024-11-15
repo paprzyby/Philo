@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 10:32:55 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:23:17 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	forks_init(t_data *data)
 
 void	philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < data->philo_count)
@@ -53,15 +53,14 @@ int	data_init(int ac, char **av, t_data *data)
 
 	i = 1;
 	data->time_of_eats = 0;
-	data->all_ate = false;
-	data->philo_died = false;
-	data->beginning = get_timestamp();
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)
-			return (ft_putstr_fd("Too few philosophers passed as a argument\n", 2), 1);
+			return (ft_putstr_fd("Too few philosophers passed as a argument\n",
+					2), 1);
 		else if (i == 1 && ft_atol(av[i]) > 200)
-			return (ft_putstr_fd("Too much philosophers passed as a argument\n", 2), 1);
+			return (ft_putstr_fd("Too much philosophers passed as a argument\n",
+					2), 1);
 		else if (i == 2)
 			data->time_to_die = ft_atol(av[i]);
 		else if (i == 3)
@@ -86,6 +85,9 @@ t_data	*struct_init(int ac, char **av)
 		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
 	if (data_init(ac, av, data))
 		return (free(data), NULL);
+	data->all_ate = false;
+	data->philo_died = false;
+	data->beginning = get_timestamp();
 	data->philos = malloc(sizeof(t_philo) * data->philo_count);
 	if (!data->philos)
 	{

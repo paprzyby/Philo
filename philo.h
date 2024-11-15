@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 11:27:47 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:22:13 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include <sys/time.h>
+# include <unistd.h>
 
-struct s_data;
+struct	s_data;
 
 /* ----------  threads and mutexes ---------- */
 
@@ -72,7 +72,8 @@ void				check_the_flags(t_data *data, int i, int finished_eating);
 
 t_data				*struct_init(int ac, char **av);
 int					data_init(int ac, char **av, t_data *data);
-void				philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks);
+void				philos_init(t_data *data, t_philo *philos,
+						pthread_mutex_t *forks);
 void				forks_init(t_data *data);
 int					creating_threads(t_data *data);
 
@@ -86,6 +87,6 @@ long				ft_atol(char *str);
 
 void				cleanup(t_data *data);
 long long			get_timestamp(void);
-void 				print_message(t_philo *philos, int	id, char *str);
+void				print_message(t_philo *philos, int id, char *str);
 
 #endif
