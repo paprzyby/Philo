@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:17:18 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 11:17:32 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:11:20 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	process_duration(long time, t_data *data)
 	long long i;
 
 	i = get_timestamp();
-	while (data->philo_died == false)
+	while (data->philo_died == false && data->all_ate == false)
 	{
 		if (get_timestamp() - i >= time)
 			break ;
@@ -51,12 +51,8 @@ void	*philo_function(void *arg)
 	data = philos->data;
 	if (philos->id % 2)
 		usleep(1000);
-	while (1)
+	while (data->philo_died == false && data->all_ate == false)
 	{
-		pthread_mutex_lock(&data->dead_lock);
-		if (data->philo_died == true || data->all_ate == true)
-			break ;
-		pthread_mutex_unlock(&data->dead_lock);
 		eating(data, philos);
 		print_message(philos, philos->id, "is sleeping");
 		process_duration(data->time_to_sleep, data);
