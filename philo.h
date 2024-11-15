@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:02:54 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 15:56:54 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:25:34 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,19 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-/* ----------  threads and mutexes ---------- */
-
 struct s_data;
+
+/* ----------  threads and mutexes ---------- */
 
 typedef struct s_philo
 {
 	pthread_t		philo;
 	int				id;
 	int				meals_eaten;
-	long			last_meal;
+	int				last_meal;
 	bool			full;
 	bool			dead_flag;
+	bool			eating;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	struct s_data	*data;
@@ -47,6 +48,7 @@ typedef struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				time_of_eats;
+	int				beginning;
 	bool			all_ate;
 	bool			philo_died;
 	pthread_mutex_t	write_lock;
@@ -56,23 +58,34 @@ typedef struct s_data
 	t_philo			*philos;
 }					t_data;
 
-void				ft_putstr_fd(char *s, int fd);
-bool				ft_isdigit(char *str);
-long				ft_atol(char *str);
+/* ----------  philos functions ---------- */
 
-void				cleanup(t_data *data);
+void				*philo_function(void *arg);
+void				eating(t_data *data, t_philo *philos);
+
+/* ----------  checker functions ---------- */
+
+void				*checker_function(void *arg);
+void				check_the_flags(t_data *data, int i, int finished_eating);
+
+/* ----------  init functions ---------- */
 
 t_data				*struct_init(int ac, char **av);
 int					data_init(int ac, char **av, t_data *data);
 void				philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks);
 void				forks_init(t_data *data);
-
 int					creating_threads(t_data *data);
-void				*checker_function(void *arg);
-void				*philo_function(void *arg);
 
-void				check_the_flags(t_data *data, int i, int finished_eating);
+/* ----------  utils ---------- */
 
-long				get_timestamp(void);
+void				ft_putstr_fd(char *s, int fd);
+bool				ft_isdigit(char *str);
+long				ft_atol(char *str);
+
+/* ----------  helper functions ---------- */
+
+void				cleanup(t_data *data);
+long long			get_timestamp(void);
+void 				print_message(t_philo *philos, int	id, char *str);
 
 #endif

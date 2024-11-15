@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 15:42:11 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:32:55 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void	philos_init(t_data *data, t_philo *philos, pthread_mutex_t *forks)
 	{
 		philos[i].id = i + 1;
 		philos[i].meals_eaten = 0;
-		philos[i].last_meal = 0;
+		philos[i].last_meal = get_timestamp();
 		philos[i].full = false;
 		philos[i].dead_flag = false;
 		philos[i].left_fork = &forks[i];
 		philos[i].right_fork = &forks[(i + 1) % data->philo_count];
 		philos[i].data = data;
+		philos[i].eating = false;
 		i++;
 	}
 }
@@ -54,6 +55,7 @@ int	data_init(int ac, char **av, t_data *data)
 	data->time_of_eats = 0;
 	data->all_ate = false;
 	data->philo_died = false;
+	data->beginning = get_timestamp();
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)

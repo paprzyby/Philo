@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/13 14:19:36 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:08:09 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (creating_threads(data))
 	{
-		ft_putstr_fd("Error with creating the thread\n", 2);
+		ft_putstr_fd("Error with creating the threads\n", 2);
 		return (cleanup(data), 1);
 	}
 	return (cleanup(data), 0);
