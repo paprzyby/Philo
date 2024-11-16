@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:17:18 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/16 13:19:14 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 13:38:20 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	*philo_function(void *arg)
 		if (philos->meals_eaten == data->time_of_eats)
 		{
 			philos->full = true;
-			break;
+			break ;
 		}
 		print_message(philos, philos->id, "is sleeping");
 		process_duration(data->time_to_sleep, data);

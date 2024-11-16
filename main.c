@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/16 13:07:11 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 14:03:31 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,3 @@ int	main(int ac, char **av)
 	}
 	return (cleanup(data), 0);
 }
-
-// sprawdzic maksymalny czas programu

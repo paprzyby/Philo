@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:09:03 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 18:23:17 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 13:50:19 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	data_init(int ac, char **av, t_data *data)
 	int	i;
 
 	i = 1;
-	data->time_of_eats = 0;
 	while (ac > i)
 	{
 		if (i == 1 && ft_atol(av[i]) < 1)
@@ -73,6 +72,7 @@ int	data_init(int ac, char **av, t_data *data)
 			data->philo_count = ft_atol(av[i]);
 		i++;
 	}
+	data->beginning = get_timestamp();
 	return (0);
 }
 
@@ -85,9 +85,9 @@ t_data	*struct_init(int ac, char **av)
 		return (ft_putstr_fd("Error while allocating memory\n", 2), NULL);
 	if (data_init(ac, av, data))
 		return (free(data), NULL);
+	data->time_of_eats = 0;
 	data->all_ate = false;
 	data->philo_died = false;
-	data->beginning = get_timestamp();
 	data->philos = malloc(sizeof(t_philo) * data->philo_count);
 	if (!data->philos)
 	{
