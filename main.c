@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:06:09 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 18:21:51 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:57:32 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ int	main(int ac, char **av)
 	return (cleanup(data), 0);
 }
 
-// case gdy wszyscy zjedli
 // case z jednym philo
 // sprawdzic maksymalny czas programu
