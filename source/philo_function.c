@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:17:18 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/16 12:50:40 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 13:19:14 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	process_duration(long time, t_data *data)
 	long long	i;
 
 	i = get_timestamp();
-	while (data->philo_died == false && data->all_ate == false)
+	while (data->philo_died == false)
 	{
 		if (get_timestamp() - i >= time)
 			break ;
@@ -50,9 +50,14 @@ void	*philo_function(void *arg)
 
 	philos = (t_philo *)arg;
 	data = philos->data;
+	if (data->philo_count == 1)
+	{
+		print_message(philos, philos->id, "has taken a fork");
+		return (process_duration(data->time_to_die, data), arg);
+	}
 	if (philos->id % 2)
 		usleep(1000);
-	while (data->philo_died == false && data->all_ate == false)
+	while (data->philo_died == false)
 	{
 		eating(data, philos);
 		if (philos->meals_eaten == data->time_of_eats)
@@ -64,8 +69,5 @@ void	*philo_function(void *arg)
 		process_duration(data->time_to_sleep, data);
 		print_message(philos, philos->id, "is thinking");
 	}
-	pthread_mutex_unlock(&data->dead_lock);
-	return (arg);
+	return (pthread_mutex_unlock(&data->dead_lock), arg);
 }
-
-// if (data->philo_count == 1)????

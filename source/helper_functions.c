@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:18:27 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 18:22:24 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 13:11:38 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_message(t_philo *philos, int id, char *str)
 	long	time;
 
 	data = philos->data;
-	if (data->philo_died == false && data->all_ate == false)
+	if (data->philo_died == false)
 	{
 		pthread_mutex_lock(&data->write_lock);
 		time = get_timestamp() - data->beginning;

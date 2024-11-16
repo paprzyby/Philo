@@ -6,7 +6,7 @@
 /*   By: paprzyby <paprzyby@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:17:22 by paprzyby          #+#    #+#             */
-/*   Updated: 2024/11/15 18:13:24 by paprzyby         ###   ########.fr       */
+/*   Updated: 2024/11/16 13:14:52 by paprzyby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 int	death_check(t_data *data, t_philo *philos, long time_to_die)
 {
 	pthread_mutex_lock(&data->meal_lock);
-	if (get_timestamp() - philos->last_meal >= time_to_die && !philos->eating)
-		return (pthread_mutex_unlock(&data->meal_lock), 1);
+	if (get_timestamp() - philos->last_meal >= time_to_die
+		&&philos->eating == false)
+	{
+		pthread_mutex_unlock(&data->meal_lock);
+		return (1);
+	}
 	pthread_mutex_unlock(&data->meal_lock);
 	return (0);
 }
@@ -54,13 +58,9 @@ void	*checker_function(void *arg)
 	int		finished_eating;
 
 	data = (t_data *)arg;
-	while (1)
-	{
-		i = 0;
-		finished_eating = 0;
+	i = 0;
+	finished_eating = 0;
+	while (data->all_ate == false && data->philo_died == false)
 		check_the_flags(data, i, finished_eating);
-		if (data->all_ate == true || data->philo_died == true)
-			break ;
-	}
 	return (arg);
 }
